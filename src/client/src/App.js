@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import fetch from 'node-fetch';
 
-const url = 'http://localhost:3000/api/comentarios/1'
+const url = 'http://localhost:3001/api/comentarios/1'
 
 class App extends Component {
   constructor(props){
