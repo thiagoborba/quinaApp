@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use('/api', routes);
 app.use(express.static(`${__dirname}/client`));
 
-const port = 3001;
+const port = 3000;
 
 app.listen(port, () => {
   console.log(`server running on port ${port}`)

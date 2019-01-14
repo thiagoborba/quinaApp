@@ -1,12 +1,10 @@
 import express from 'express';
-import postagens from './postagens';
-import comentarios from './comentarios';
+import userAuth from './userAuth'
 import cors from 'cors'
 
 const router = express.Router();
 
 router.use(cors())
-router.use(postagens);
-router.use(comentarios);
+router.use(userAuth);
 
 export default router;
