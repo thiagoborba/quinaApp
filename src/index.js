@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/api', routes);
+app.use(routes);
 app.use(express.static(`${__dirname}/client`));
 
 const port = 3000;
