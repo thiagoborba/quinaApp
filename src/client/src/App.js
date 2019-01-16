@@ -1,30 +1,44 @@
 import React, { Component } from 'react';
 import fetch from 'node-fetch';
 
-const url = 'http://localhost:3000/find/users'
+const findUsersurl = 'http://localhost:3000/find/users';
+const createUserUrl = 'http://localhost:3000/auth/register'
 
 class App extends Component {
   constructor(props){
     super(props)
 
     this.state = {
-      res: []
+      res: [],
+      newUser: {}
     }
   }
 
-  componentDidMount() {
-    fetch(url)
+  _getDbContent() {
+    fetch(findUsersurl)
       .then(res => res.json())
       .then(res => {
         this.setState({res})
-        console.log(this.state.res)
       })
   }
 
-  render() {
+  componentDidMount() {
+    this.getDbContent();
+  };
+
+  _createTd(){
+  }
+
+render() {
     return (
       <div>
-        {JSON.stringify(this.state.res)}
+        <table>
+          {
+            this._getDbContent().map(user => {
+
+            } )
+          }
+        </table>
       </div>
     );
   }

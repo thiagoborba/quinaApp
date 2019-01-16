@@ -1,14 +1,10 @@
 {
-  "name": "xumes-blog",
+  "name": "quina-app",
   "version": "1.0.0",
-  "description": "Blog feito com node.js e react.js",
+  "description": "Se você chegou até aqui saiba que o objetivo real desta webApp é comer o cu de quem ta lendo rs!",
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/thiagoborba/xumes-blog.git"
   },
   "keywords": [
     "node",
@@ -18,10 +14,6 @@
   ],
   "author": "Thiago Borba",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/thiagoborba/xumes-blog/issues"
-  },
-  "homepage": "https://github.com/thiagoborba/xumes-blog#readme",
   "dependencies": {
     "argon2": "^0.20.0",
     "body-parser": "^1.18.3",
