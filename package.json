@@ -4,7 +4,7 @@
   "description": "Se você chegou até aqui saiba que o objetivo real desta webApp é comer o cu de quem ta lendo rs!",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node src/index.js"
+    "start": "docker restart f959cb6e0fbe && nodemon --exec babel-node src/index.js"
   },
   "keywords": [
     "node",
