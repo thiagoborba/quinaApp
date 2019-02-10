@@ -39,28 +39,27 @@ class App extends Component {
   setPassword = e => this.setState({ password: e.target.value })
 
   render () {
+    const { classes } = this.props
     return (
-      <div id="layout">
-        <a href="#menu" id="menuLink" className="menu-link">
-          <span></span>
-        </a>
-        <div id="menu">
-          <div className="pure-menu">
-            <a className="pure-menu-heading" href="#">Company</a>
-
-            <ul className="pure-menu-list">
-              <li className="pure-menu-item"><a href="#" className="pure-menu-link">Home</a></li>
-              <li className="pure-menu-item"><a href="#" className="pure-menu-link">Autor</a></li>
-              <li className="pure-menu-item"><a href="#" className="pure-menu-link">Livro</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div id="main">
-          <div className="header">
-            <h1>Home</h1>
-          </div>
-        </div>
+      <div>
+        <table className={classes.table}>
+          <thead>
+            <tr>
+              <th className={classes.table}>nome</th>
+              <th className={classes.table}>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.res.users && this.state.res.users.map(user => {
+              return (
+                <tr key={user._id}>
+                  <td className={classes.table}>{user.name}</td>
+                  <td className={classes.table}>{user.email}</td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
       </div>
     )
   }
