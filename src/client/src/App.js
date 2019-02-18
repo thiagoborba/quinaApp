@@ -19,7 +19,11 @@ class App extends Component {
   }
 
   componentDidMount () {
-    fetch(APP_SERVER_URL)
+    this.fetchTableContent()
+  }
+
+  fetchTableContent = async () => {
+    await fetch(APP_SERVER_URL)
       .then(res => res.json())
       .then(data => this.setState({
         lista: data,
@@ -43,6 +47,8 @@ class App extends Component {
       .then(json => console.log('resposta', json))
       .catch(err => console.log(err))
       // NAO ESTA ATUALIZANDO O COMPONENTE
+
+    this.fetchTableContent()
   }
 
   setName = (e) => {
