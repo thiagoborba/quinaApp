@@ -1,12 +1,10 @@
-import express from 'express';
-import userAuth from './userAuth'
-import users from './users';
+import express from 'express'
+import authors from './authors'
 import cors from 'cors'
 
-const router = express.Router();
+const router = express.Router()
 
 router.use(cors())
-router.use('/auth', userAuth);
-router.use('/find', users)
+router.use('/api', authors)
 
-export default router;
+export default router

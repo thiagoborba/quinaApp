@@ -3,7 +3,7 @@ import argon2 from 'argon2'
 
 const Schema = mongoose.Schema
 
-const UserSchema = new Schema({
+const AuthorSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -18,6 +18,7 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: true,
+    select: false,
   },
   createdAt: {
     type: Date,
@@ -25,7 +26,7 @@ const UserSchema = new Schema({
   },
 })
 
-UserSchema.pre('save', async function (next) {
+AuthorSchema.pre('save', async function (next) {
   try {
     const hash = await argon2.hash(this.password)
     this.password = hash
@@ -35,6 +36,6 @@ UserSchema.pre('save', async function (next) {
   next()
 })
 
-const User = mongoose.model('User', UserSchema)
+const Author = mongoose.model('Author', AuthorSchema)
 
-export default User
+export default Author
