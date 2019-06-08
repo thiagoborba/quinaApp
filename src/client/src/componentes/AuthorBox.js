@@ -22,7 +22,6 @@ class AuthorBox extends Component {
   fetchAuthors = async () => {
     const { data } = await fetch(APP_SERVER_URL)
       .then(res => res.json())
-    console.log(data)
     this.setState({ authors: data })
   }
 
@@ -33,10 +32,15 @@ class AuthorBox extends Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(author),
     }
-    const { data } = await fetch(APP_SERVER_URL, options)
+    const response = await fetch(APP_SERVER_URL, options)
       .then(res => res.json())
 
-    this.setState({ authors: data })
+    if (response.data) {
+      return this.setState({ authors: response.data })
+    }
+
+    // eslint-disable-next-line no-undef
+    alert(response.message)
   }
 
   render () {

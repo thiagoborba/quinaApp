@@ -17,7 +17,7 @@ export class Table extends Component {
           </thead>
           <tbody>
             {
-              authors.map(autor => {
+              authors && authors.map(autor => {
                 return (
                   <tr key={autor._id}>
                     <td>{autor.name}</td>
