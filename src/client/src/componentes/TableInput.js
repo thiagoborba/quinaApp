@@ -4,18 +4,15 @@ import '../css/side-menu.css'
 
 class TableInput extends Component {
   render () {
+    const { type, onChange, label } = this.props
     return (
       <div className="pure-control-group">
-        <label
-          htmlFor={this.props.id}
-        >
-          {this.props.label}
+        <label>
+          {label}
         </label>
         <input
-          id={this.props.id}
-          type={this.props.type}
-          value={this.props.value}
-          onChange={this.props.onChange} />
+          type={type}
+          onChange={onChange} />
       </div>
     )
   }

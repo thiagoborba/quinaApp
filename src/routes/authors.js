@@ -7,35 +7,56 @@ router.get('/authors', async (req, res) => {
   try {
     const authors = await Author.find()
 
-    res.send({ authors })
-
-    console.log('authors find successfully')
+    res
+      .status(200)
+      .json({
+        success: true,
+        acquired: true,
+        message: `Authors find successfully`,
+        data: authors,
+      })
   } catch (err) {
     res
-      .status(400)
-      .send({
-        error: `searching fail, ${err}`,
+      .status(404)
+      .json({
+        success: true,
+        acquired: false,
+        message: `Authors not found ${err}`,
       })
-
-    console.log(err)
   }
 })
 
 router.post('/authors', async (req, res) => {
   try {
-    const author = await Author.create(req.body)
+    await Author.create(req.body)
+    const authors = await Author.find()
 
-    res.send({ author })
-
-    console.log('author created successfully')
-  } catch (err) {
-    res
-      .status(400)
-      .send({
-        error: `create author fail, ${err}`,
+    return res
+      .status(200)
+      .json({
+        success: true,
+        created: true,
+        message: `author created successfully`,
+        data: authors,
       })
-
-    console.log(err)
+  } catch (e) {
+    if (e.code === 11000) {
+      const { name, email } = req.body
+      return res
+        .status(400)
+        .json({
+          success: false,
+          created: false,
+          message: `author ${name} not created, email ${email} already exist`,
+        })
+    }
+    return res
+      .status(500)
+      .json({
+        success: false,
+        created: false,
+        message: `Author not created, ${e.message}`,
+      })
   }
 })
 
